@@ -20,7 +20,7 @@ var filesToCache = [
     '/images/img_avatar2.png'
 ];
 
-workbox..core.setCacheNameDetails({
+workbox.core.setCacheNameDetails({
   prefix: 'my-app',
   suffix: 'v1',
   precache: 'custom-precache-name',
