@@ -20,7 +20,7 @@ var filesToCache = [
     '/images/img_avatar2.png'
 ];
 
-workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.CacheFirst());
+workbox.routing.registerRoute(new RegExp('^.*\.(jpg|css|png)$'), new workbox.strategies.CacheFirst());
 
 
 
