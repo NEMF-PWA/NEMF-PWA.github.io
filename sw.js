@@ -1,3 +1,15 @@
+importScripts('/third_party/workbox/workbox-sw.js');
+
+workbox.setConfig({
+  modulePathPrefix: '/third_party/workbox/'
+});
+
+if(workbox){
+	console.log("workbox setup success");
+}else{
+	console.log("workbox setup fail");
+}
+
 var cacheName = 'hello-pwa:v5';
 var filesToCache = [
   '/',
