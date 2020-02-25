@@ -1,4 +1,4 @@
-importScripts('/third_party/workbox/workbox-v5.0.0/workbox-sw.js');
+importScripts('/third_party/workbox/workbox-v5.0.0/ng-workbox-sw.js');
 
 workbox.setConfig({
   modulePathPrefix: '/third_party/workbox/workbox-v5.0.0/'
