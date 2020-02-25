@@ -20,6 +20,10 @@ var filesToCache = [
     '/images/img_avatar2.png'
 ];
 
+workbox.setCacheNameDetails({
+  prefix: 'myApplication',
+  suffix: 'v1'
+});
 workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.CacheFirst());
 
 
