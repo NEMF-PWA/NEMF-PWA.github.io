@@ -1,7 +1,7 @@
-importScripts('/third_party/workbox/workbox-sw.js');
+importScripts('/third_party/workbox/workbox-v5.0.0/workbox-sw.js');
 
 workbox.setConfig({
-  modulePathPrefix: '/third_party/workbox/'
+  modulePathPrefix: '/third_party/workbox/workbox-v5.0.0/'
 });
 
 if(workbox){
