@@ -21,8 +21,11 @@ var filesToCache = [
 ];
 
 workbox.setCacheNameDetails({
-  prefix: 'myApplication',
-  suffix: 'v1'
+  prefix: 'my-app',
+  suffix: 'v1',
+  precache: 'custom-precache-name',
+  runtime: 'custom-runtime-name',
+  googleAnalytics: 'custom-google-analytics-name'
 });
 workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.CacheFirst());
 
