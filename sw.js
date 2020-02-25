@@ -20,6 +20,10 @@ var filesToCache = [
     '/images/img_avatar2.png'
 ];
 
+workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.staleWhileRevalidate());
+
+
+
 /* Start the service worker and cache all of the app's content */
 self.addEventListener('install', function (e) {
     /*e.waitUntil(
