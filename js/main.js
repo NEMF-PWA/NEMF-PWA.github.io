@@ -20,7 +20,7 @@ window.onload = () => {
         }
 
         if ($('#username').val() != '' && $('#password').val() != '') {
-			window.open('/pages/post1.html')
+			window.open('/pages/post1.html',"_self");
      //       $('#loginDiv').hide();
        //     $('#dashboardDiv').show();
          //   $('#welcomeMessage').append($('#username').val());
