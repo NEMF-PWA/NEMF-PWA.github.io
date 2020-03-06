@@ -11,7 +11,7 @@ var PWAConfigurtion = {
     ],
     runtimeCacheFiles: [
 	{
-        "folderPath": "/style",
+        "folderPath": "/css",
         "includedFiles": ["/.*.css"],
         "excludedFiles": []
     }, {
