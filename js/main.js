@@ -20,9 +20,10 @@ window.onload = () => {
         }
 
         if ($('#username').val() != '' && $('#password').val() != '') {
-            $('#loginDiv').hide();
-            $('#dashboardDiv').show();
-            $('#welcomeMessage').append($('#username').val());
+			window.open('/pages/post1.html')
+     //       $('#loginDiv').hide();
+       //     $('#dashboardDiv').show();
+         //   $('#welcomeMessage').append($('#username').val());
         }
     }));
 
