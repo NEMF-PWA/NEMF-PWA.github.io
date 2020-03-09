@@ -1,6 +1,7 @@
 window.onload = () => {
     'use strict';
-	$('pushBtn').click(function(event){
+		console.log("window  onload");
+	$('#pushBtn').click(function(event){
 		console.log("pushBtn  clicked");
 	});
 }
