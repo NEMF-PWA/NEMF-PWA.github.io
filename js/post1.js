@@ -23,31 +23,25 @@ function initFirebaseMessagingRegistration() {
     messaging
         .requestPermission()
         .then(function() {
-            //messageElement.innerHTML = "Got notification permission";
             console.log("Got notification permission");
             return messaging.getToken();
         })
         .then(function(token) {
             // print the token on the HTML page
-            //tokenElement.innerHTML = "Token is " + token;
             console.log("Token is ", token);
         })
         .catch(function(err) {
-            //errorElement.innerHTML = "Error: " + err;
             console.log("Didn't get notification permission", err);
         });
 
     messaging.onMessage(function(payload) {
         console.log("Message received. ", JSON.stringify(payload));
-        //notificationElement.innerHTML = notificationElement.innerHTML + " " + payload.data.notification;
     });
     messaging.onTokenRefresh(function() {
         messaging.getToken()
             .then(function(refreshedToken) {
                 console.log('Token refreshed.');
-                //tokenElement.innerHTML = "Token is " + refreshedToken;
             }).catch(function(err) {
-                //errorElement.innerHTML = "Error: " + err;
                 console.log('Unable to retrieve refreshed token ', err);
             });
     });
