@@ -1,5 +1,5 @@
-//importScripts('https://www.gstatic.com/firebasejs/4.13.0/firebase-app.js')
-//importScripts('https://www.gstatic.com/firebasejs/4.13.0/firebase-messaging.js')
+importScripts('https://www.gstatic.com/firebasejs/4.13.0/firebase-app.js')
+importScripts('https://www.gstatic.com/firebasejs/4.13.0/firebase-messaging.js')
 const firebaseConfig = {
   apiKey: "AIzaSyBtB3nk9k-AUuBQvcplmUbdwI13HIWZT6U",
   authDomain: "notification-test-25d1e.firebaseapp.com",
