@@ -28,7 +28,6 @@ firebase.initializeApp(firebaseConfig);
         icon: notification.icon
     };
 
-    return self.registration.showNotification(notificationTitle,
-        notificationOptions);
+    return true; //self.registration.showNotification(notificationTitle,notificationOptions);
 });
   }
