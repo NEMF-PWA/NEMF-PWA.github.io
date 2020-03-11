@@ -1,7 +1,7 @@
 window.onload = () => {
     'use strict';
 
-    console.log("window  onload");
+    console.log("window  onload",PWAConfigurtion);
     $('#pushBtn').click(function(event) {
         initFirebaseMessagingRegistration();
     });
