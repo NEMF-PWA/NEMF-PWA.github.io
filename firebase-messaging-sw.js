@@ -13,7 +13,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
   if(firebase){
   // Initialize Firebase
-	/*const messaging = firebase.messaging();
+	const messaging = firebase.messaging();
 	console.log('messaging',messaging);
 
 	
@@ -31,5 +31,5 @@ firebase.initializeApp(firebaseConfig);
 	
 
     return true; //self.registration.showNotification(notificationTitle,notificationOptions);
-});*/
+});
   }
