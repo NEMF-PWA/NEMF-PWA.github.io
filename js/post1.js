@@ -35,6 +35,15 @@ function initFirebaseMessagingRegistration() {
         });
 
     messaging.onMessage(function(payload) {
+		const notificationTitle = payload.notification.title;
+		const notificationOptions = {
+        body: payload.notification.body,
+        icon: payload.notification.icon,        
+		};
+		navigator.serviceWorker.ready.then(registration => {
+			registration.showNotification(title, options);
+		});
+
         console.log("Message received. ", JSON.stringify(payload));
     });
     messaging.onTokenRefresh(function() {
