@@ -50,7 +50,7 @@ function initFirebaseMessagingRegistration() {
         icon: payload.notification.icon,        
 		};
 		navigator.serviceWorker.ready.then(function(registration){
-			registration.showNotification(title, options);
+			registration.showNotification(notificationTitle, notificationOptions);
 		});
         console.log("Message received. ", JSON.stringify(payload));
     });
