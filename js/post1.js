@@ -43,7 +43,6 @@ function initFirebaseMessagingRegistration() {
 		navigator.serviceWorker.ready.then(registration => {
 			registration.showNotification(title, options);
 		});
-
         console.log("Message received. ", JSON.stringify(payload));
     });
     messaging.onTokenRefresh(function() {
