@@ -49,8 +49,10 @@ function initFirebaseMessagingRegistration() {
         body: payload.notification.body,
         icon: payload.notification.icon,        
 		};*/
+		setTimeout(() => {
 		navigator.serviceWorker.ready.then(function(registration){
 			registration.active.postMessage(payload);
+		});
 		});
 		
         console.log("Message received. ", JSON.stringify(payload));
