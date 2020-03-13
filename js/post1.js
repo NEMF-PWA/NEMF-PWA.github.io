@@ -55,9 +55,9 @@ function initFirebaseMessagingRegistration() {
 		}, 100);
 		});*/
 		
-		//navigator.serviceWorker.postMessage(payload);
+		navigator.serviceWorker.controller.postMessage(payload);
         console.log("Message received. ", JSON.stringify(payload));
-        console.log("Message received. ", navigator.serviceWorker);
+        console.log("Message received. ", navigator.serviceWorker.controller);
     });
     messaging.onTokenRefresh(function() {
         messaging.getToken()
