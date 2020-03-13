@@ -261,3 +261,23 @@ self.addEventListener('fetch', event => {
         })
     );
 });
+
+const showMessage = function(payload){
+    console.log('showMessage', payload);
+    const notificationTitle = payload.data.title;
+    const notificationOptions = {
+        body: payload.data.body,
+        icon: payload.data.icon,
+        image: payload.data.image,
+        click_action: payload.data.click_action,
+        data:payload.data.click_action
+    };  
+
+
+  return self.registration.showNotification(notificationTitle,notificationOptions); 
+}
+
+self.addEventListener('message', function (evt) {     
+  showMessage( evt.data );
+});
+
