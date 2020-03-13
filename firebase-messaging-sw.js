@@ -18,14 +18,14 @@ firebase.initializeApp(firebaseConfig);
 
 const showMessage = function(payload){
     console.log('showMessage', payload);
-    const notificationTitle = payload.data.title;
+    const notificationTitle = payload.notification.title;
     const notificationOptions = {
-        body: payload.data.body,
-        icon: payload.data.icon,
-        image: payload.data.image,
-        click_action: payload.data.click_action,
-        data:payload.data.click_action
-    };  
+        body: payload.notification.body,
+        icon: payload.notification.icon,
+        image: payload.notification.image,
+        click_action: payload.notification.click_action,
+        data:payload.notification.click_action
+    }  
 
 
   return self.registration.showNotification(notificationTitle,notificationOptions); 
