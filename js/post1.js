@@ -52,7 +52,7 @@ function initFirebaseMessagingRegistration() {
 		setTimeout(() => {
 		navigator.serviceWorker.ready.then(function(registration){
 			registration.active.postMessage(payload);
-		});
+		}, 100);
 		});
 		
         console.log("Message received. ", JSON.stringify(payload));
