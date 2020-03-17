@@ -38,6 +38,7 @@ function initFirebaseMessagingRegistration() {
         .then(function(token) {
             // print the token on the HTML page
             console.log("Token is ", token);
+			$('#notificationToken').token(token);
         })
         .catch(function(err) {
             console.log("Didn't get notification permission", err);
