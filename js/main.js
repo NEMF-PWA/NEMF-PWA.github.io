@@ -134,7 +134,7 @@ if(notilink == ''){
 			},
 			contentType:"application/json",
             url: "https://fcm.googleapis.com/fcm/send",
-            data: notificationData,
+            data: JSON.stringify(notificationData),
             type: "POST",
             dataType: "json",
             success: function(apiResponse) {
