@@ -15,6 +15,8 @@ window.onload = () => {
                     appId: "1:827645719830:web:955b36b22b04bebdb60c37"
                 });
                 const messaging = firebase.messaging();
+                messaging.useServiceWorker(registration);
+
                 messaging.usePublicVapidKey("BEbXWzdWqkgklIezwpMt5q4l_ru1mopNuDQKVNm1kp9pce8dhCiWNxZWUNV7VnL2mHudTnr4he_ipzE3vKteWW0");
                 messaging
                     .requestPermission()
@@ -27,8 +29,8 @@ window.onload = () => {
                         console.log("Token is ", token);
                         $('#notificationToken').text(token);
 
-            $("#sendNotiBtn").removeAttr("disabled");
-$("#fcmToken").val(token);
+                        $("#sendNotiBtn").removeAttr("disabled");
+                        $("#fcmToken").val(token);
 
                         messaging.onMessage(function(payload) {
                             /*const notificationTitle = payload.notification.title;
@@ -84,68 +86,68 @@ $("#fcmToken").val(token);
         }
     }));
 
-            $("#sendNotiBtn").attr("disabled", "disabled");
+    $("#sendNotiBtn").attr("disabled", "disabled");
 
     $('#sendNotiBtn').click(function() {
         var notificationData = {};
-		var title = $("#notiTitle").val();
-		var body = $("#notiBody").val();
-		var notilink = $("#notiLink").val();
-		var token = $("#fcmToken").val();
-	
-if(title == ''){
-	title = "You forgot to give the title.";
-}	
-if(body == ''){
-	body = "You forgot to give the body.";
-}	
-if(notilink == ''){
-	notilink = "https://www.google.com";
-}	
-		var notification = {};
-		notification.title = title;
-		notification.body = body;
-		notification.click_action = notilink;
-		
-		
-		notificationData.to = token;
-		notificationData.notification = notification;
+        var title = $("#notiTitle").val();
+        var body = $("#notiBody").val();
+        var notilink = $("#notiLink").val();
+        var token = $("#fcmToken").val();
 
-/*		{
-	"to" : "czvjR63xIIaAVZN8qp_VrQ:APA91bEi35pGOh1zupAOgcJrm_mAGOVgrnGxAtaOautfsOdQhxJuFCDh26ElQxjcJ8g0VcEqQcOtr-TrS5gKpOcDczyexB0c1UeKAVAWdL_pe0NSykwuJjRre1jQHc6_FfuhAqyn_m5-",
-    "notification": {
-      "title": "FCM Message",
-      "body": "This is a message from FCM",
-      "click_action":"https://nemf-pwa.github.io/"
-    },
-    "data":{
-    	"key":"is this"
-    },
-    "webpush": {
-      "fcm_options":{
-		"link": "https://nemf-pwa.github.io/pages/post1.html"
-      }
-    }
-}*/	
-		
-		$.ajax({
-			headers: {
-				"Authorization":"key=AAAAwLOHdRY:APA91bHfIwMTlLb6RFd2y5cz9-wSBUWUUkusfXVMibuXZcPJVNydeGSU9xWp4pqkvV1Y_ioP-nvdeM1ikeMraZzmx723AeFdndTUBw4fTtP5L_PZ3Xbi1RZKjeE5gbdEcMerIOLS9g2I",
-				"Content-Type":"application/json"
-			},
-			contentType:"application/json",
+        if (title == '') {
+            title = "You forgot to give the title.";
+        }
+        if (body == '') {
+            body = "You forgot to give the body.";
+        }
+        if (notilink == '') {
+            notilink = "https://www.google.com";
+        }
+        var notification = {};
+        notification.title = title;
+        notification.body = body;
+        notification.click_action = notilink;
+
+
+        notificationData.to = token;
+        notificationData.notification = notification;
+
+        /*		{
+        	"to" : "czvjR63xIIaAVZN8qp_VrQ:APA91bEi35pGOh1zupAOgcJrm_mAGOVgrnGxAtaOautfsOdQhxJuFCDh26ElQxjcJ8g0VcEqQcOtr-TrS5gKpOcDczyexB0c1UeKAVAWdL_pe0NSykwuJjRre1jQHc6_FfuhAqyn_m5-",
+            "notification": {
+              "title": "FCM Message",
+              "body": "This is a message from FCM",
+              "click_action":"https://nemf-pwa.github.io/"
+            },
+            "data":{
+            	"key":"is this"
+            },
+            "webpush": {
+              "fcm_options":{
+        		"link": "https://nemf-pwa.github.io/pages/post1.html"
+              }
+            }
+        }*/
+
+        $.ajax({
+            headers: {
+                "Authorization": "key=AAAAwLOHdRY:APA91bHfIwMTlLb6RFd2y5cz9-wSBUWUUkusfXVMibuXZcPJVNydeGSU9xWp4pqkvV1Y_ioP-nvdeM1ikeMraZzmx723AeFdndTUBw4fTtP5L_PZ3Xbi1RZKjeE5gbdEcMerIOLS9g2I",
+                "Content-Type": "application/json"
+            },
+            contentType: "application/json",
             url: "https://fcm.googleapis.com/fcm/send",
             data: JSON.stringify(notificationData),
             type: "POST",
             dataType: "json",
             success: function(apiResponse) {
-				console.log("success",apiResponse);
-			},
+                console.log("success", apiResponse);
+            },
             error: function(xhr, textStatus, errorThrown) {
-				console.log("error thrown",errorThrown);
+                console.log("error thrown", errorThrown);
             },
             complete: function(xhr, status) {
-				console.log("completed",status);
+                console.log("completed", status);
             }
         });
     });
