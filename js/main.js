@@ -41,7 +41,8 @@ window.onload = () => {
 		
         console.log("Message received. ", registration);
         console.log("Message received. ", registration.active);
-		registration.controller.postMessage(payload);
+					registration.active.postMessage(payload);
+		//registration.controller.postMessage(payload);
         console.log("Message received. ", JSON.stringify(payload));
     });
         })
