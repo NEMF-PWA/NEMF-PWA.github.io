@@ -24,8 +24,8 @@ const showMessage = function(payload){
         body: payload.notification.body,
         icon: payload.notification.icon,
         image: payload.notification.image,
-        click_action: payload.notification.click_action,
-        data:payload.notification.click_action
+        //click_action: payload.notification.click_action,
+        //data:payload.notification.click_action
     }  
 
 
