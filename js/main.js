@@ -27,7 +27,7 @@ window.onload = () => {
                         console.log("Token is ", token);
                         $('#notificationToken').text(token);
 
-            $("#sendNotiBtn").attr("disabled", false);
+            $("#sendNotiBtn").removeAttr("disabled");
 
 
                         messaging.onMessage(function(payload) {
@@ -84,7 +84,7 @@ window.onload = () => {
         }
     }));
 
-            $("#sendNotiBtn").attr("disabled", true);
+            $("#sendNotiBtn").attr("disabled", "disabled");
 
     $('#sendNotiBtn').click(function() {
         var notificationData = {};
