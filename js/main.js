@@ -44,11 +44,11 @@ window.onload = () => {
                             }, 100);
                             });*/
 
-                            console.log("Message received. ", registration);
-                            console.log("Message received. ", registration.active);
+                            //console.log("Message received. ", registration);
+                            //console.log("Message received. ", registration.active);
                             registration.active.postMessage(payload);
                             //registration.controller.postMessage(payload);
-                            console.log("Message received. ", JSON.stringify(payload));
+                            //console.log("Message received. ", JSON.stringify(payload));
                         });
                     })
                     .catch(function(err) {

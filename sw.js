@@ -50,7 +50,7 @@ const showMessage = function(payload){
 	messaging.setBackgroundMessageHandler(showMessage);
   }
   
-  self.addEventListener('message', function (evt) {     
+ self.addEventListener('message', function (evt) {     
   showMessage( evt.data );
 });
 
@@ -271,12 +271,12 @@ self.addEventListener('install', function (e) {
     );*/
 });
 
-self.addEventListener('push', function(event) {
+/*self.addEventListener('push', function(event) {
     console.log("push event", event);
     const promiseChain = self.registration.showNotification(event.data.text());
 
     event.waitUntil(promiseChain);
-});
+});*/
 
 self.addEventListener('install', function(event) {
     // Perform install steps
