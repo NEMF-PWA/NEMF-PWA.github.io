@@ -81,8 +81,3 @@ window.onload = () => {
 
 
 }
-
-
-function initFirebaseMessagingRegistration() {
-
-}
