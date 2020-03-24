@@ -131,6 +131,7 @@ if(notilink == ''){
 		$.ajax({
 			headers: {
 				"Authorization":"key=AAAAwLOHdRY:APA91bHfIwMTlLb6RFd2y5cz9-wSBUWUUkusfXVMibuXZcPJVNydeGSU9xWp4pqkvV1Y_ioP-nvdeM1ikeMraZzmx723AeFdndTUBw4fTtP5L_PZ3Xbi1RZKjeE5gbdEcMerIOLS9g2I",
+				"Content-Type":"application/json"
 			},
 			contentType:"application/json",
             url: "https://fcm.googleapis.com/fcm/send",
