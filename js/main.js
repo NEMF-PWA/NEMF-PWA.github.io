@@ -46,7 +46,10 @@ window.onload = () => {
 
                             //console.log("Message received. ", registration);
                             //console.log("Message received. ", registration.active);
-                            registration.active.postMessage(payload);
+							setTimeout(function(){
+							registration.active.postMessage(payload);	
+							},1000);
+                            
                             //registration.controller.postMessage(payload);
                             //console.log("Message received. ", JSON.stringify(payload));
                         });
