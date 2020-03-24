@@ -3,7 +3,7 @@ window.onload = () => {
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('./sw.js').then(function(){
+            .register('./sw.js').then(function(registration){
 
     firebase.initializeApp({
         apiKey: "AIzaSyBtB3nk9k-AUuBQvcplmUbdwI13HIWZT6U",
@@ -39,9 +39,10 @@ window.onload = () => {
 		}, 100);
 		});*/
 		
-		navigator.serviceWorker.controller.postMessage(payload);
+        console.log("Message received. ", registration);
+        console.log("Message received. ", registration.controller);
+		registration.controller.postMessage(payload);
         console.log("Message received. ", JSON.stringify(payload));
-        console.log("Message received. ", navigator.serviceWorker.controller);
     });
         })
         .catch(function(err) {
