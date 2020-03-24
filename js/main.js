@@ -40,7 +40,7 @@ window.onload = () => {
 		});*/
 		
         console.log("Message received. ", registration);
-        console.log("Message received. ", registration.controller);
+        console.log("Message received. ", registration.active);
 		registration.controller.postMessage(payload);
         console.log("Message received. ", JSON.stringify(payload));
     });
