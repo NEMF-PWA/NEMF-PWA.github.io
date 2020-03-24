@@ -50,9 +50,9 @@ const showMessage = function(payload){
 	messaging.setBackgroundMessageHandler(showMessage);
   }
   
- self.addEventListener('message', function (evt) {     
+ /*self.addEventListener('message', function (evt) {     
   showMessage( evt.data );
-});
+});*/
 
 /*self.addEventListener('notificationclick',function(evt){
 	console.log("notification clicked",evt);
