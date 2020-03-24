@@ -54,9 +54,9 @@ const showMessage = function(payload){
   showMessage( evt.data );
 });
 
-self.addEventListener('notificationclick',function(evt){
+/*self.addEventListener('notificationclick',function(evt){
 	console.log("notification clicked",evt);
-});
+});*/
 
 
 
