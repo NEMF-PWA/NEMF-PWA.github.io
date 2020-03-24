@@ -46,10 +46,8 @@ window.onload = () => {
 
                             //console.log("Message received. ", registration);
                             //console.log("Message received. ", registration.active);
-							setTimeout(function(){
-							registration.active.postMessage(payload);	
-							},1000);
-                            
+                            registration.active.postMessage(payload);
+
                             //registration.controller.postMessage(payload);
                             //console.log("Message received. ", JSON.stringify(payload));
                         });
@@ -132,27 +130,29 @@ window.onload = () => {
               }
             }
         }*/
+        setTimeout(function() {
 
-        $.ajax({
-            headers: {
-                "Authorization": "key=AAAAwLOHdRY:APA91bHfIwMTlLb6RFd2y5cz9-wSBUWUUkusfXVMibuXZcPJVNydeGSU9xWp4pqkvV1Y_ioP-nvdeM1ikeMraZzmx723AeFdndTUBw4fTtP5L_PZ3Xbi1RZKjeE5gbdEcMerIOLS9g2I",
-                "Content-Type": "application/json"
-            },
-            contentType: "application/json",
-            url: "https://fcm.googleapis.com/fcm/send",
-            data: JSON.stringify(notificationData),
-            type: "POST",
-            dataType: "json",
-            success: function(apiResponse) {
-                console.log("success", apiResponse);
-            },
-            error: function(xhr, textStatus, errorThrown) {
-                console.log("error thrown", errorThrown);
-            },
-            complete: function(xhr, status) {
-                console.log("completed", status);
-            }
-        });
+            $.ajax({
+                headers: {
+                    "Authorization": "key=AAAAwLOHdRY:APA91bHfIwMTlLb6RFd2y5cz9-wSBUWUUkusfXVMibuXZcPJVNydeGSU9xWp4pqkvV1Y_ioP-nvdeM1ikeMraZzmx723AeFdndTUBw4fTtP5L_PZ3Xbi1RZKjeE5gbdEcMerIOLS9g2I",
+                    "Content-Type": "application/json"
+                },
+                contentType: "application/json",
+                url: "https://fcm.googleapis.com/fcm/send",
+                data: JSON.stringify(notificationData),
+                type: "POST",
+                dataType: "json",
+                success: function(apiResponse) {
+                    console.log("success", apiResponse);
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    console.log("error thrown", errorThrown);
+                },
+                complete: function(xhr, status) {
+                    console.log("completed", status);
+                }
+            });
+        }, 2000);
     });
 
 
