@@ -26,11 +26,7 @@ window.onload = () => {
             // print the token on the HTML page
             console.log("Token is ", token);
 			$('#notificationToken').text(token);
-        })
-        .catch(function(err) {
-            console.log("Didn't get notification permission", err);
-        });
-
+			
     messaging.onMessage(function(payload) {
 		/*const notificationTitle = payload.notification.title;
 		const notificationOptions = {
@@ -47,6 +43,11 @@ window.onload = () => {
         console.log("Message received. ", JSON.stringify(payload));
         console.log("Message received. ", navigator.serviceWorker.controller);
     });
+        })
+        .catch(function(err) {
+            console.log("Didn't get notification permission", err);
+        });
+
     messaging.onTokenRefresh(function() {
         messaging.getToken()
             .then(function(refreshedToken) {
