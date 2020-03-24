@@ -36,8 +36,22 @@
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
         </div>
+		
+        <div class="container">
+            <label for="title"><b>Title</b></label>
+            <input id="fcmToken" type="hidden">
+            <input id="notiTitle" type="text" placeholder="Enter Title" name="title" required>
+
+            <label for="body"><b>Body</b></label>
+            <input id="notiBody" type="text" placeholder="Enter Body" name="body" required>
+
+            <label for="link"><b>link (https only)</b></label>
+            <input id="notiLink" type="text" placeholder="Enter link" name="link">
+
+            <button id="sendNotiBtn" type="button">Send Push Notification</button>
+        </div>
     </div>
-    <div id="dashboardDiv" style="display: none;">
+    <!--<div id="dashboardDiv" style="display: none;">
         <h2 id="welcomeMessage">Hello </h2>
 
 
@@ -56,7 +70,7 @@
 
         <a href="https://github.com/samdutton/simpl/blob/gh-pages/imagecapture" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
-    </div>
+    </div>-->
 
 
 
