@@ -28,7 +28,7 @@ window.onload = () => {
                         $('#notificationToken').text(token);
 
             $("#sendNotiBtn").removeAttr("disabled");
-
+$("#fcmToken").val(token);
 
                         messaging.onMessage(function(payload) {
                             /*const notificationTitle = payload.notification.title;
