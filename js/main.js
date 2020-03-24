@@ -68,18 +68,18 @@ window.onload = () => {
     }
 
     $("#loginBtn").click($.proxy(function(event) {
-        if ($('#username').val() == '') {
+        if ($('#username').val() === '') {
             tempHTML = "<label  class='errorLabel error-alert error-alert-login'>Username cannot be blank</label>";
             $('#username').after(tempHTML);
         }
 
 
-        if ($('#password').val() == '') {
+        if ($('#password').val() === '') {
             tempHTML = "<label class='errorLabel error-alert error-alert-login' >Password cannot be blank</label>";
             $('#password').after(tempHTML);
         }
 
-        if ($('#username').val() != '' && $('#password').val() != '') {
+        if ($('#username').val() !== '' && $('#password').val() !== '') {
             window.open('/pages/post1.html', "_self");
             //       $('#loginDiv').hide();
             //     $('#dashboardDiv').show();
@@ -96,13 +96,13 @@ window.onload = () => {
         var notilink = $("#notiLink").val();
         var token = $("#fcmToken").val();
 
-        if (title == '') {
+        if (title === '') {
             title = "You forgot to give the title.";
         }
-        if (body == '') {
+        if (body === '') {
             body = "You forgot to give the body.";
         }
-        if (notilink == '') {
+        if (notilink === '') {
             notilink = "https://www.google.com";
         }
         var notification = {};

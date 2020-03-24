@@ -57,9 +57,9 @@ firebase.initializeApp(firebaseConfig);
   }
   
 
-/*self.addEventListener('notificationclick',function(evt){
+self.addEventListener('notificationclick',function(evt){
 	console.log("notification clicked",evt);
-});*/
+});
 
 
 
@@ -70,27 +70,9 @@ if (PWAConfigurtion) {
     console.log("pwa configuration load failed");
 }
 
-/*workbox.setConfig({
-    modulePathPrefix: '/third_party/workbox/workbox-v5.0.0/'
-});
-
-if (workbox) {
-    console.log("workbox setup success");
-} else {
-    console.log("workbox setup fail");
-}*/
-
 const staticCacheName = PWAConfigurtion.cacheName.staticCacheName;
 const runtimeCacheName = PWAConfigurtion.cacheName.runtimeCacheName;
 
-/*workbox.core.setCacheNameDetails({
-    prefix: 'my-app',
-    suffix: 'v1',
-    precache: 'custom-precache-name',
-    runtime: 'custom-runtime-name',
-    googleAnalytics: 'custom-google-analytics-name'
-});
-*/
 /*if (PWAConfigurtion.hasOwnProperty('preCacheArray')) {
     workbox.precaching.precacheAndRoute(PWAConfigurtion.preCacheArray);
 }*/
