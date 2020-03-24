@@ -1,7 +1,5 @@
 window.onload = () => {
     'use strict';
-            $("#sendNotiBtn").attr("disabled", true);
-
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
@@ -85,6 +83,8 @@ window.onload = () => {
             //   $('#welcomeMessage').append($('#username').val());
         }
     }));
+
+            $("#sendNotiBtn").attr("disabled", true);
 
     $('#sendNotiBtn').click(function() {
         var notificationData = {};
