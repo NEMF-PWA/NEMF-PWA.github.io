@@ -57,6 +57,7 @@ firebase.initializeApp(firebaseConfig);
 
 self.addEventListener('notificationclick',function(evt){
 	console.log("notification clicked",evt);
+	clients.openWindow(evt.notification.click_action);
 });
 
 
