@@ -26,7 +26,7 @@ firebase.initializeApp(firebaseConfig);
         icon: payload.notification.icon,
         image: payload.notification.image,
         click_action: payload.notification.click_action,
-        //data:payload.notification.click_action
+        data:payload.notification.click_action
     }  
     console.log('notificationOptions', notificationOptions);
 
