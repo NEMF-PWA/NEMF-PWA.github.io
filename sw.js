@@ -322,7 +322,7 @@ self.addEventListener('fetch', event => {
     );
 });
 
-const showMessage = function(payload){
+/*const showMessage = function(payload){
     console.log('showMessage', payload);
     const notificationTitle = payload.notification.title;
     const notificationOptions = {
@@ -335,7 +335,7 @@ const showMessage = function(payload){
 
 
   return self.registration.showNotification(notificationTitle,notificationOptions); 
-}
+}*/
 
 self.addEventListener('message', function (evt) {     
   showMessage( evt.data );
