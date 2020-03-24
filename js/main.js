@@ -88,9 +88,9 @@ window.onload = () => {
 
     $('#sendNotiBtn').click(function() {
         var notificationData = {};
-		var title = #("#notiTitle").val();
-		var body = #("#notiBody").val();
-		var notilink = #("#notiLink").val();
+		var title = $("#notiTitle").val();
+		var body = $("#notiBody").val();
+		var notilink = $("#notiLink").val();
 		var token = $("#fcmToken").val();
 	
 if(title == ''){
