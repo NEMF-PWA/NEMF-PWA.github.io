@@ -26,13 +26,11 @@ firebase.initializeApp(firebaseConfig);
         icon: payload.notification.icon,
         image: payload.notification.image,
         click_action: payload.notification.click_action,
-        data:payload.notification.click_action
-    }  
+        data:payload.notification.
+    };
     console.log('notificationOptions', notificationOptions);
-
-
   return self.registration.showNotification(notificationTitle,notificationOptions); 
-}  
+};
 	messaging.setBackgroundMessageHandler(showMessage);
 
 
