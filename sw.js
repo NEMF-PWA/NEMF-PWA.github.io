@@ -2,44 +2,44 @@ importScripts('/configuration.js');
 importScripts('https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js')
 importScripts('https://www.gstatic.com/firebasejs/7.12.0/firebase-messaging.js')
 const firebaseConfig = {
-  apiKey: "AIzaSyBtB3nk9k-AUuBQvcplmUbdwI13HIWZT6U",
-  authDomain: "notification-test-25d1e.firebaseapp.com",
-  databaseURL: "https://notification-test-25d1e.firebaseio.com",
-  projectId: "notification-test-25d1e",
-  storageBucket: "notification-test-25d1e.appspot.com",
-  messagingSenderId: "827645719830",
-  appId: "1:827645719830:web:955b36b22b04bebdb60c37"
+    apiKey: "AIzaSyBtB3nk9k-AUuBQvcplmUbdwI13HIWZT6U",
+    authDomain: "notification-test-25d1e.firebaseapp.com",
+    databaseURL: "https://notification-test-25d1e.firebaseio.com",
+    projectId: "notification-test-25d1e",
+    storageBucket: "notification-test-25d1e.appspot.com",
+    messagingSenderId: "827645719830",
+    appId: "1:827645719830:web:955b36b22b04bebdb60c37"
 };
 
 firebase.initializeApp(firebaseConfig);
-  if(firebase){
-  // Initialize Firebase
-	const messaging = firebase.messaging();
-	console.log('messaging',messaging);
+if (firebase) {
+    // Initialize Firebase
+    const messaging = firebase.messaging();
+    console.log('messaging', messaging);
 
 
-  const showMessage = function(payload){
-    console.log('showMessage', payload);
-    const notificationTitle = payload.notification.title;
-    const notificationOptions = {
-        body: payload.notification.body,
-        icon: payload.notification.icon,
-        image: payload.notification.image,
-        click_action: payload.notification.click_action,
-        data:payload.notification
+    const showMessage = function (payload) {
+        console.log('showMessage', payload);
+        const notificationTitle = payload.notification.title;
+        const notificationOptions = {
+            body: payload.notification.body,
+            icon: payload.notification.icon,
+            image: payload.notification.image,
+            click_action: payload.notification.click_action,
+            data: payload.notification
+        };
+        console.log('notificationOptions', notificationOptions);
+        return self.registration.showNotification(notificationTitle, notificationOptions);
     };
-    console.log('notificationOptions', notificationOptions);
-  return self.registration.showNotification(notificationTitle,notificationOptions); 
-};
-	messaging.setBackgroundMessageHandler(showMessage);
+    messaging.setBackgroundMessageHandler(showMessage);
 
 
- self.addEventListener('message', function (evt) {     
-  showMessage( evt.data );
-});
-	/*function (payload) {
+    self.addEventListener('message', function (evt) {
+        showMessage(evt.data);
+    });
+    /*function (payload) {
     console.log('[firebase-messaging-sw.js] Received background message ', payload);
-	
+
     const notification = JSON.parse(payload.data.notification);
     // Customize notification here
     const notificationTitle = notification.title;
@@ -47,20 +47,26 @@ firebase.initializeApp(firebaseConfig);
         body: notification.body,
         icon: notification.icon
     };
-	
-	
+
+
 
     return true; //self.registration.showNotification(notificationTitle,notificationOptions);
 }*/
-  }
-  
+}
 
-self.addEventListener('notificationclick',function(evt){
-	console.log("notification clicked",evt);
-	clients.openWindow(evt.notification.click_action);
+
+self.addEventListener('notificationclick', function (e) {
+    console.log("notification clicked", e);
+// Close the notification popout
+    e.notification.close();
+    // Get all the Window clients
+    e.waitUntil(clients.matchAll({type: 'window'}).then(clientsArr => {
+        // If a Window tab matching the targeted URL already exists, focus that;
+        const hadWindowToFocus = clientsArr.some(windowClient => windowClient.url === e.notification.data.url ? (windowClient.focus(), true) : false);
+        // Otherwise, open a new tab to the applicable URL and focus it.
+        if (!hadWindowToFocus) clients.openWindow(e.notification.data.url).then(windowClient => windowClient ? windowClient.focus() : null);
+    }));
 });
-
-
 
 
 if (PWAConfigurtion) {
@@ -125,39 +131,39 @@ if (PWAConfigurtion.hasOwnProperty('runtimeCacheFiles')) {
 }*/
 
 
-if(PWAConfigurtion.hasOwnProperty('fcmNotificationRequired') && PWAConfigurtion.fcmNotificationRequired){
-/*const firebaseConfig = {
-  apiKey: "AIzaSyBtB3nk9k-AUuBQvcplmUbdwI13HIWZT6U",
-  authDomain: "notification-test-25d1e.firebaseapp.com",
-  databaseURL: "https://notification-test-25d1e.firebaseio.com",
-  projectId: "notification-test-25d1e",
-  storageBucket: "notification-test-25d1e.appspot.com",
-  messagingSenderId: "827645719830",
-  appId: "1:827645719830:web:955b36b22b04bebdb60c37"
-};
-
-firebase.initializeApp(firebaseConfig);
-  if(firebase){
-  // Initialize Firebase
-	const messaging = firebase.messaging();
-	console.log('messaging',messaging);
-
-	
-	messaging.setBackgroundMessageHandler(function (payload) {
-    console.log('[firebase-messaging-sw.js] Received background message ', payload);
-	
-    const notification = JSON.parse(payload.data.notification);
-    // Customize notification here
-    const notificationTitle = notification.title;
-    const notificationOptions = {
-        body: notification.body,
-        icon: notification.icon
+if (PWAConfigurtion.hasOwnProperty('fcmNotificationRequired') && PWAConfigurtion.fcmNotificationRequired) {
+    /*const firebaseConfig = {
+      apiKey: "AIzaSyBtB3nk9k-AUuBQvcplmUbdwI13HIWZT6U",
+      authDomain: "notification-test-25d1e.firebaseapp.com",
+      databaseURL: "https://notification-test-25d1e.firebaseio.com",
+      projectId: "notification-test-25d1e",
+      storageBucket: "notification-test-25d1e.appspot.com",
+      messagingSenderId: "827645719830",
+      appId: "1:827645719830:web:955b36b22b04bebdb60c37"
     };
 
-    return self.registration.showNotification(notificationTitle,
-        notificationOptions);
-});
-  }*/
+    firebase.initializeApp(firebaseConfig);
+      if(firebase){
+      // Initialize Firebase
+        const messaging = firebase.messaging();
+        console.log('messaging',messaging);
+
+
+        messaging.setBackgroundMessageHandler(function (payload) {
+        console.log('[firebase-messaging-sw.js] Received background message ', payload);
+
+        const notification = JSON.parse(payload.data.notification);
+        // Customize notification here
+        const notificationTitle = notification.title;
+        const notificationOptions = {
+            body: notification.body,
+            icon: notification.icon
+        };
+
+        return self.registration.showNotification(notificationTitle,
+            notificationOptions);
+    });
+      }*/
 }
 
 /*function fetchAndCache(url) {
@@ -192,8 +198,6 @@ self.addEventListener('fetch', function(event) {
 });
 
 */
-
-
 
 
 /*self.addEventListener('install', event => {
@@ -262,13 +266,13 @@ self.addEventListener('install', function (e) {
     event.waitUntil(promiseChain);
 });*/
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function (event) {
     // Perform install steps
     event.waitUntil(
         caches.open(staticCacheName)
-        .then(function(cache) {
-            return cache.addAll(PWAConfigurtion.preCacheArray);
-        })
+            .then(function (cache) {
+                return cache.addAll(PWAConfigurtion.preCacheArray);
+            })
     );
 });
 
@@ -277,28 +281,28 @@ self.addEventListener('fetch', event => {
     console.log('Fetch event for ', event.request.url);
     event.respondWith(
         caches.match(event.request)
-        .then(response => {
-            if (response) {
-                console.log('Found ', event.request.url, ' in cache');
-                return response;
-            }
-            console.log('Network request for ', event.request.url);
-            return fetch(event.request)
-                .then(response => {
-                    if (response.status === 404) {
-                        return caches.match('pages/404.html');
-                    }
-                    return caches.open(runtimeCacheName)
-                        .then(cache => {
-                            if (event.request.url.match(new RegExp(regexFromConfiguration))) {
-                                cache.put(event.request.url, response.clone());
-                            } else {
-                                console.log("no match in regex");
-                            }
-                            return response;
-                        });
-                });
-        }).catch(error => {
+            .then(response => {
+                if (response) {
+                    console.log('Found ', event.request.url, ' in cache');
+                    return response;
+                }
+                console.log('Network request for ', event.request.url);
+                return fetch(event.request)
+                    .then(response => {
+                        if (response.status === 404) {
+                            return caches.match('pages/404.html');
+                        }
+                        return caches.open(runtimeCacheName)
+                            .then(cache => {
+                                if (event.request.url.match(new RegExp(regexFromConfiguration))) {
+                                    cache.put(event.request.url, response.clone());
+                                } else {
+                                    console.log("no match in regex");
+                                }
+                                return response;
+                            });
+                    });
+            }).catch(error => {
             console.log('Error, ', error);
             return caches.match('pages/offline.html');
         })
