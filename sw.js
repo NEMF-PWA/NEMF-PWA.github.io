@@ -18,24 +18,6 @@ firebase.initializeApp(firebaseConfig);
 	console.log('messaging',messaging);
 
 
-
-	/*function (payload) {
-    console.log('[firebase-messaging-sw.js] Received background message ', payload);
-	
-    const notification = JSON.parse(payload.data.notification);
-    // Customize notification here
-    const notificationTitle = notification.title;
-    const notificationOptions = {
-        body: notification.body,
-        icon: notification.icon
-    };
-	
-	
-
-    return true; //self.registration.showNotification(notificationTitle,notificationOptions);
-}*/
-	messaging.setBackgroundMessageHandler(showMessage);
-  }
   const showMessage = function(payload){
     console.log('showMessage', payload);
     const notificationTitle = payload.notification.title;
@@ -51,10 +33,29 @@ firebase.initializeApp(firebaseConfig);
 
   return self.registration.showNotification(notificationTitle,notificationOptions); 
 }  
-  
- /*self.addEventListener('message', function (evt) {     
+	messaging.setBackgroundMessageHandler(showMessage);
+
+
+ self.addEventListener('message', function (evt) {     
   showMessage( evt.data );
-});*/
+});
+	/*function (payload) {
+    console.log('[firebase-messaging-sw.js] Received background message ', payload);
+	
+    const notification = JSON.parse(payload.data.notification);
+    // Customize notification here
+    const notificationTitle = notification.title;
+    const notificationOptions = {
+        body: notification.body,
+        icon: notification.icon
+    };
+	
+	
+
+    return true; //self.registration.showNotification(notificationTitle,notificationOptions);
+}*/
+  }
+  
 
 /*self.addEventListener('notificationclick',function(evt){
 	console.log("notification clicked",evt);
@@ -338,7 +339,7 @@ self.addEventListener('fetch', event => {
   return self.registration.showNotification(notificationTitle,notificationOptions); 
 }*/
 
-self.addEventListener('message', function (evt) {     
+/*self.addEventListener('message', function (evt) {     
   showMessage( evt.data );
-});
+});*/
 
