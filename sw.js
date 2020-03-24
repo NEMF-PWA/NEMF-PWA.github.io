@@ -27,6 +27,7 @@ const showMessage = function(payload){
         click_action: payload.notification.click_action,
         //data:payload.notification.click_action
     }  
+    console.log('notificationOptions', notificationOptions);
 
 
   return self.registration.showNotification(notificationTitle,notificationOptions); 
