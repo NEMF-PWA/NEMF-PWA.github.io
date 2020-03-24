@@ -17,21 +17,7 @@ firebase.initializeApp(firebaseConfig);
 	const messaging = firebase.messaging();
 	console.log('messaging',messaging);
 
-const showMessage = function(payload){
-    console.log('showMessage', payload);
-    const notificationTitle = payload.notification.title;
-    const notificationOptions = {
-        body: payload.notification.body,
-        icon: payload.notification.icon,
-        image: payload.notification.image,
-        click_action: payload.notification.click_action,
-        //data:payload.notification.click_action
-    }  
-    console.log('notificationOptions', notificationOptions);
 
-
-  return self.registration.showNotification(notificationTitle,notificationOptions); 
-}  
 
 	/*function (payload) {
     console.log('[firebase-messaging-sw.js] Received background message ', payload);
@@ -50,6 +36,21 @@ const showMessage = function(payload){
 }*/
 	messaging.setBackgroundMessageHandler(showMessage);
   }
+  const showMessage = function(payload){
+    console.log('showMessage', payload);
+    const notificationTitle = payload.notification.title;
+    const notificationOptions = {
+        body: payload.notification.body,
+        icon: payload.notification.icon,
+        image: payload.notification.image,
+        click_action: payload.notification.click_action,
+        //data:payload.notification.click_action
+    }  
+    console.log('notificationOptions', notificationOptions);
+
+
+  return self.registration.showNotification(notificationTitle,notificationOptions); 
+}  
   
  /*self.addEventListener('message', function (evt) {     
   showMessage( evt.data );
