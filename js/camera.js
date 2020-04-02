@@ -158,13 +158,11 @@ navigator.mediaDevices.getUserMedia({video: true}).
 then(handleSuccess).catch(handleError);
 
 function handleSuccess(stream) {
-    spinner.hideSpinner();
     video.srcObject = stream;
     localstream = stream;
 }
 
 function handleError(e){
-    spinner.hideSpinner();
     console.log("fail");
     $NGRootView.showView('attachmentCapture', attachmentDetailsJson);
 }
