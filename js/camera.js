@@ -154,15 +154,37 @@ var video = document.querySelector('#screenshot-video');
 var localstream;
 var canvas = document.createElement('canvas');
 
-navigator.mediaDevices.getUserMedia({video: true}).
-then(handleSuccess).catch(handleError);
+navigator.mediaDevices.getUserMedia({video: true}).then(handleSuccess).catch(handleError);
 
 function handleSuccess(stream) {
     video.srcObject = stream;
     localstream = stream;
 }
 
-function handleError(e){
+function handleError(e) {
     console.log("fail");
     $NGRootView.showView('attachmentCapture', attachmentDetailsJson);
 }
+
+button.onclick = video.onclick = function () {
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+    // Other browsers will fall back to image/png
+    //var k = canvas.toDataURL('image/webp');
+    var k = canvas.toDataURL('image/jpeg');
+    var imageBase64 = k.replace(/^data:image\/(png|jpeg|jpg|tif|webp);base64,/, '');
+    //video.pause();
+    var imageAttachment = {};
+    //var attachmentName = attachmentDetailsJson["attachmentNameToCapture"];
+    //imageAttachment.attachmentFormat = "image/jpeg";
+    //imageAttachment.attachmentType = "PHOTO";
+    imageAttachment.base64EncodedData = imageBase64;
+    imageAttachment.attachmentType = "PHOTO";
+    imageAttachment.attachedTimeStamp = (new Date()).getTime();
+    video.pause();
+    video.src = "";
+    localstream.getTracks()[0].stop();
+    //saveTheImage(imageAttachment);
+    console.log("attachment", imageAttachment);
+};
