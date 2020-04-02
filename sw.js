@@ -1,14 +1,14 @@
 importScripts('/configuration.js');
-importScripts('https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js')
-importScripts('https://www.gstatic.com/firebasejs/7.12.0/firebase-messaging.js')
+importScripts('https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/7.12.0/firebase-messaging.js');
 const firebaseConfig = {
-    apiKey: "AIzaSyBtB3nk9k-AUuBQvcplmUbdwI13HIWZT6U",
-    authDomain: "notification-test-25d1e.firebaseapp.com",
-    databaseURL: "https://notification-test-25d1e.firebaseio.com",
-    projectId: "notification-test-25d1e",
-    storageBucket: "notification-test-25d1e.appspot.com",
-    messagingSenderId: "827645719830",
-    appId: "1:827645719830:web:955b36b22b04bebdb60c37"
+    apiKey: "AIzaSyDbJGm4xRE-lJfe9FfuvVKTwUFQ7Ku-oME",
+    authDomain: "nemf-pwa.firebaseapp.com",
+    databaseURL: "https://nemf-pwa.firebaseio.com",
+    projectId: "nemf-pwa",
+    storageBucket: "nemf-pwa.appspot.com",
+    messagingSenderId: "288160901742",
+    appId: "1:288160901742:web:104173ef3ec0b4ecc2547f"
 };
 
 firebase.initializeApp(firebaseConfig);

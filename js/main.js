@@ -3,71 +3,71 @@ window.onload = () => {
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('./sw.js').then(function(registration) {
+            .register('./sw.js').then(function (registration) {
 
-                firebase.initializeApp({
-                    apiKey: "AIzaSyBtB3nk9k-AUuBQvcplmUbdwI13HIWZT6U",
-                    authDomain: "notification-test-25d1e.firebaseapp.com",
-                    databaseURL: "https://notification-test-25d1e.firebaseio.com",
-                    projectId: "notification-test-25d1e",
-                    storageBucket: "notification-test-25d1e.appspot.com",
-                    messagingSenderId: "827645719830",
-                    appId: "1:827645719830:web:955b36b22b04bebdb60c37"
-                });
-                const messaging = firebase.messaging();
-                messaging.useServiceWorker(registration);
+            firebase.initializeApp({
+                apiKey: "AIzaSyDbJGm4xRE-lJfe9FfuvVKTwUFQ7Ku-oME",
+                authDomain: "nemf-pwa.firebaseapp.com",
+                databaseURL: "https://nemf-pwa.firebaseio.com",
+                projectId: "nemf-pwa",
+                storageBucket: "nemf-pwa.appspot.com",
+                messagingSenderId: "288160901742",
+                appId: "1:288160901742:web:104173ef3ec0b4ecc2547f"
+            });
+            const messaging = firebase.messaging();
+            messaging.useServiceWorker(registration);
 
-                messaging.usePublicVapidKey("BEbXWzdWqkgklIezwpMt5q4l_ru1mopNuDQKVNm1kp9pce8dhCiWNxZWUNV7VnL2mHudTnr4he_ipzE3vKteWW0");
-                messaging
-                    .requestPermission()
-                    .then(function() {
-                        console.log("Got notification permission");
-                        return messaging.getToken();
-                    })
-                    .then(function(token) {
-                        // print the token on the HTML page
-                        console.log("Token is ", token);
-                        $('#notificationToken').text(token);
+            messaging.usePublicVapidKey("BEbXWzdWqkgklIezwpMt5q4l_ru1mopNuDQKVNm1kp9pce8dhCiWNxZWUNV7VnL2mHudTnr4he_ipzE3vKteWW0");
+            messaging
+                .requestPermission()
+                .then(function () {
+                    console.log("Got notification permission");
+                    return messaging.getToken();
+                })
+                .then(function (token) {
+                    // print the token on the HTML page
+                    console.log("Token is ", token);
+                    $('#notificationToken').text(token);
 
-                        $("#sendNotiBtn").removeAttr("disabled");
-                        $("#fcmToken").val(token);
+                    $("#sendNotiBtn").removeAttr("disabled");
+                    $("#fcmToken").val(token);
 
-                        messaging.onMessage(function(payload) {
-                            /*const notificationTitle = payload.notification.title;
-		const notificationOptions = {
-        body: payload.notification.body,
-        icon: payload.notification.icon,        
-		};*/
-                            /*setTimeout(() => {
-                            navigator.serviceWorker.ready.then(function(registration){
-                            	registration.active.postMessage(payload);
-                            }, 100);
-                            });*/
-
-                            //console.log("Message received. ", registration);
-                            //console.log("Message received. ", registration.active);
+                    messaging.onMessage(function (payload) {
+                        /*const notificationTitle = payload.notification.title;
+    const notificationOptions = {
+    body: payload.notification.body,
+    icon: payload.notification.icon,
+    };*/
+                        /*setTimeout(() => {
+                        navigator.serviceWorker.ready.then(function(registration){
                             registration.active.postMessage(payload);
+                        }, 100);
+                        });*/
 
-                            //registration.controller.postMessage(payload);
-                            //console.log("Message received. ", JSON.stringify(payload));
-                        });
-                    })
-                    .catch(function(err) {
-                        console.log("Didn't get notification permission", err);
+                        //console.log("Message received. ", registration);
+                        //console.log("Message received. ", registration.active);
+                        registration.active.postMessage(payload);
+
+                        //registration.controller.postMessage(payload);
+                        //console.log("Message received. ", JSON.stringify(payload));
                     });
+                })
+                .catch(function (err) {
+                    console.log("Didn't get notification permission", err);
+                });
 
-                messaging.onTokenRefresh(function() {
-                    messaging.getToken()
-                        .then(function(refreshedToken) {
-                            console.log('Token refreshed.');
-                        }).catch(function(err) {
-                            console.log('Unable to retrieve refreshed token ', err);
-                        });
+            messaging.onTokenRefresh(function () {
+                messaging.getToken()
+                    .then(function (refreshedToken) {
+                        console.log('Token refreshed.');
+                    }).catch(function (err) {
+                    console.log('Unable to retrieve refreshed token ', err);
                 });
             });
+        });
     }
 
-    $("#loginBtn").click($.proxy(function(event) {
+    $("#loginBtn").click($.proxy(function (event) {
         if ($('#username').val() === '') {
             tempHTML = "<label  class='errorLabel error-alert error-alert-login'>Username cannot be blank</label>";
             $('#username').after(tempHTML);
@@ -89,7 +89,7 @@ window.onload = () => {
 
     $("#sendNotiBtn").attr("disabled", "disabled");
 
-    $('#sendNotiBtn').click(function() {
+    $('#sendNotiBtn').click(function () {
         var notificationData = {};
         var title = $("#notiTitle").val();
         var body = $("#notiBody").val();
@@ -130,7 +130,7 @@ window.onload = () => {
               }
             }
         }*/
-        setTimeout(function() {
+        setTimeout(function () {
 
             $.ajax({
                 headers: {
@@ -142,13 +142,13 @@ window.onload = () => {
                 data: JSON.stringify(notificationData),
                 type: "POST",
                 dataType: "json",
-                success: function(apiResponse) {
+                success: function (apiResponse) {
                     console.log("success", apiResponse);
                 },
-                error: function(xhr, textStatus, errorThrown) {
+                error: function (xhr, textStatus, errorThrown) {
                     console.log("error thrown", errorThrown);
                 },
-                complete: function(xhr, status) {
+                complete: function (xhr, status) {
                     console.log("completed", status);
                 }
             });

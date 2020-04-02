@@ -6,10 +6,10 @@
     <title>Hello World</title>
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="apple-touch-icon" href="images/hello-icon-152.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="white" />
+    <meta name="theme-color" content="white"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Hello World">
@@ -19,71 +19,69 @@
 
 <body class="fullscreen">
 
-    <div id="loginDiv">
-        <div class="imgcontainer">
-            <img src="images/img_avatar2.png" alt="Avatar" class="avatar">
+<!--<div id="loginDiv">-->
+<!--    <div class="imgcontainer">-->
+<!--        <img src="images/img_avatar2.png" alt="Avatar" class="avatar">-->
+<!--    </div>-->
+
+<!--    <div class="container">-->
+<!--        <label for="uname"><b>Username</b></label>-->
+<!--        <input id="username" type="text" placeholder="Enter Username" name="uname" required>-->
+
+<!--        <label for="psw"><b>Password</b></label>-->
+<!--        <input id="password" type="password" placeholder="Enter Password" name="psw" required>-->
+
+<!--        <button id="loginBtn" type="button">Login</button>-->
+<!--        <label>-->
+<!--            <input type="checkbox" checked="checked" name="remember"> Remember me-->
+<!--        </label>-->
+<!--    </div>-->
+
+<!--    <div class="container">-->
+<!--        <label for="title"><b>Title</b></label>-->
+<!--        <input id="fcmToken" type="hidden">-->
+<!--        <input id="notiTitle" type="text" placeholder="Enter Title" name="title" required>-->
+
+<!--        <label for="body"><b>Body</b></label>-->
+<!--        <input id="notiBody" type="text" placeholder="Enter Body" name="body" required>-->
+
+<!--        <label for="link"><b>link (https only)</b></label>-->
+<!--        <input id="notiLink" type="text" placeholder="Enter link" name="link">-->
+
+<!--        <button id="sendNotiBtn" type="button">Send Push Notification</button>-->
+<!--    </div>-->
+<!--</div>-->
+<div id="dashboardDiv" style="display: none;">
+<!--    <h2 id="welcomeMessage">Hello </h2>-->
+
+
+    <div>
+        <button id="grabFrame">Grab Frame</button>
+        <button id="takePhoto">Take Photo</button>
+        <div class="select">
+            <label for="videoSource">Video source: </label><select id="videoSource"></select>
         </div>
-
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input id="username" type="text" placeholder="Enter Username" name="uname" required>
-
-            <label for="psw"><b>Password</b></label>
-            <input id="password" type="password" placeholder="Enter Password" name="psw" required>
-
-            <button id="loginBtn" type="button">Login</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-        </div>
-		
-        <div class="container">
-            <label for="title"><b>Title</b></label>
-            <input id="fcmToken" type="hidden">
-            <input id="notiTitle" type="text" placeholder="Enter Title" name="title" required>
-
-            <label for="body"><b>Body</b></label>
-            <input id="notiBody" type="text" placeholder="Enter Body" name="body" required>
-
-            <label for="link"><b>link (https only)</b></label>
-            <input id="notiLink" type="text" placeholder="Enter link" name="link">
-
-            <button id="sendNotiBtn" type="button">Send Push Notification</button>
-        </div>
+        <input class="hidden" id="zoom" type="range" step="20">
     </div>
-    <!--<div id="dashboardDiv" style="display: none;">
-        <h2 id="welcomeMessage">Hello </h2>
+
+    <video autoplay playsinline class="hidden"></video>
+    <img>
+    <canvas class="hidden"></canvas>
+
+    <a href="https://github.com/samdutton/simpl/blob/gh-pages/imagecapture" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
 
 
-        <div>
-            <button id="grabFrame">Grab Frame</button>
-            <button id="takePhoto">Take Photo</button>
-            <div class="select">
-                <label for="videoSource">Video source: </label><select id="videoSource"></select>
-            </div>
-            <input class="hidden" id="zoom" type="range" step="20">
-        </div>
+<!-- firebase messaging js files -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-messaging.js"></script>
 
-        <video autoplay playsinline class="hidden"></video>
-        <img>
-        <canvas class="hidden"></canvas>
+<script src="js/main.js"></script>
+<script src="js/camera.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-        <a href="https://github.com/samdutton/simpl/blob/gh-pages/imagecapture" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
-
-    </div>-->
-
-
-
-
-
-  <!-- firebase messaging js files -->
-	<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-messaging.js"></script>
-
-    <script src="js/main.js"></script>
-    <script src="js/camera.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+<script src="init-indexedDb.js"/>
 
 </body>
 
