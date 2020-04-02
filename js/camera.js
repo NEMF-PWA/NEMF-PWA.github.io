@@ -153,7 +153,6 @@
 var video = document.querySelector('#screenshot-video');
 var localstream;
 var canvas = document.createElement('canvas');
-spinner.showSpinner();
 
 navigator.mediaDevices.getUserMedia({video: true}).
 then(handleSuccess).catch(handleError);
