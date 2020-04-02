@@ -151,6 +151,7 @@
 // }
 
 var button = document.querySelector('#capture');
+var capturedImage = document.querySelector('#image');
 var video = document.querySelector('#screenshot-video');
 var localstream;
 var canvas = document.createElement('canvas');
@@ -174,6 +175,7 @@ button.onclick = video.onclick = function () {
     // Other browsers will fall back to image/png
     //var k = canvas.toDataURL('image/webp');
     var k = canvas.toDataURL('image/jpeg');
+    capturedImage.src= k;
     var imageBase64 = k.replace(/^data:image\/(png|jpeg|jpg|tif|webp);base64,/, '');
     //video.pause();
     var imageAttachment = {};
