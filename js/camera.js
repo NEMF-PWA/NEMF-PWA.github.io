@@ -185,9 +185,9 @@ button.onclick = video.onclick = function () {
     imageAttachment.base64EncodedData = imageBase64;
     imageAttachment.attachmentType = "PHOTO";
     imageAttachment.attachedTimeStamp = (new Date()).getTime();
-    video.pause();
-    video.src = "";
-    localstream.getTracks()[0].stop();
+    // video.pause();
+    // video.src = "";
+    // localstream.getTracks()[0].stop();
     //saveTheImage(imageAttachment);
     console.log("attachment", imageAttachment);
 };
