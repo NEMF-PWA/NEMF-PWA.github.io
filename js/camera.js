@@ -150,7 +150,7 @@
 //     });
 // }
 
-var button = document.querySelector('#img-preview');
+var button = document.querySelector('#capture');
 var video = document.querySelector('#screenshot-video');
 var localstream;
 var canvas = document.createElement('canvas');
