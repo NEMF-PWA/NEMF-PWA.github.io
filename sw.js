@@ -120,10 +120,6 @@ if (PWAConfigurtion.hasOwnProperty('runtimeCacheFiles')) {
     regexFromConfiguration = regex.join("|");
     console.log("regexFromConfiguration", regexFromConfiguration);
 
-    //workbox.routing.registerRoute(new RegExp('/style/.*.css|/pages/.*.html|/.*.(css|jpg)'), new workbox.strategies.CacheFirst());
-    //workbox.routing.setCatchHandler(({event}) => {
-    //return caches.match(PWAConfigurtion.preCacheArray[3]);
-    //})
 }
 
 /*if(PWAConfigurtion.hasOwnProperty('enablePushNotification') && PWAConfigurtion.enablePushNotification){
